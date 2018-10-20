@@ -1,0 +1,8 @@
+a = '*'
+row = int (input())
+
+
+for i in range (1 , row * 2 , 2) :
+
+	print( (row - 1) * " " , i * a )
+	row -= 1
