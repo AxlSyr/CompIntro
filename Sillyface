@@ -1,0 +1,71 @@
+# Must change font size to view the face
+
+import math
+
+for y in range ( 0 , 300 , 1 ) :
+    
+    for x in range ( 0 , 200 , 1 ) :
+        
+	# ojo izquierdo
+        if ( ( math.sqrt( ( ( x - 50 ) ** 2 ) + ( ( y - 60 ) ** 2 ) ) < 35
+		and math.sqrt( ( ( x - 60 ) ** 2 ) + ( ( y - 50 ) ** 2 ) ) > 18 )
+		or math.sqrt( ( ( x - 67 ) ** 2 ) + ( 2 * ( y - 40 ) ** 2 ) ) < 8
+		
+		# ojo derecho
+		or ( math.sqrt( ( ( x - 149 ) ** 2 ) + ( ( y - 60 ) ** 2 ) ) < 35 
+		and math.sqrt( ( ( x - 159 ) ** 2 ) + ( ( y - 50 ) ** 2 ) ) > 18 )
+		or math.sqrt( ( ( x - 166 ) ** 2 ) + ( 2 * ( y - 40 ) ** 2 ) ) < 8
+
+		# nariz
+		or ( y + 210 == 3 * x or y + 211 == 3 * x or y + 212 == 3 * x )
+		and y > 84 and y < 115
+		or ( y + x == 223 )
+		and y > 114 and y < 125
+		or math.sqrt( ( ( x - 91 ) ** 2 ) + ( 4 * ( y - 120 ) ** 2 ) ) < 5
+		or math.sqrt( ( ( x - 107 ) ** 2 ) + ( 4 * ( y - 120 ) ** 2 ) ) < 5
+		and not ( y + x == 222 or y + x == 221 or y + x == 220 or y + x == 224 )
+
+		# boca
+		or math.sqrt( ( ( x - 99 ) ** 2 ) + ( 2 * ( y - 135 ) ** 2 ) ) < 80
+		and y > 140
+		and not ( math.sqrt( ( ( x - 99 ) ** 2 ) + ( 2 * ( y - 135 ) ** 2 ) ) < 77 
+		and y > 142 )
+		or x == 99 and y > 140 and y < 191
+		or x == 119 and y > 140 and y < 190
+		or x == 79 and y > 140 and y < 190
+		or x == 139 and y > 140 and y < 185
+		or x == 59 and y > 140 and y < 185
+		or x == 159 and y > 140 and y < 173
+		or x == 39 and y > 140 and y < 173
+		or y == 166 and x > 34 and x < 164
+		
+		# cejas
+		or math.sqrt( ( ( x - 50 ) ** 2 ) + ( ( 2 * y - 50 ) ** 2 ) ) < 40
+		and y < 25
+		and not ( math.sqrt( ( ( x - 53 ) ** 2 ) + ( ( 2 * y - 65 ) ** 2 ) ) < 40 )
+		or math.sqrt( ( ( x - 149 ) ** 2 ) + ( ( 2 * y - 50 ) ** 2 ) ) < 40
+		and y < 25
+		and not ( math.sqrt( ( ( x - 146 ) ** 2 ) + ( ( 2 * y - 65 ) ** 2 ) ) < 40 )
+		
+		# bigote
+		or math.sqrt( ( ( x - 50 ) ** 2 ) + ( ( 2 * y - 260 ) ** 2 ) ) < 40
+		and not ( math.sqrt( ( ( x - 54 ) ** 2 ) + ( ( 2 * y - 235 ) ** 2 ) ) < 40 )
+		or math.sqrt( ( ( x - 149 ) ** 2 ) + ( ( 2 * y - 260 ) ** 2 ) ) < 40
+		and not ( math.sqrt( ( ( x - 145 ) ** 2 ) + ( ( 2 * y - 235 ) ** 2 ) ) < 40 )
+		or math.sqrt( ( ( x - 90 ) ** 2 ) + ( 3 * ( y - 136 ) ** 2 ) ) < 15
+		or math.sqrt( ( ( x - 108 ) ** 2 ) + ( 3 * ( y - 136 ) ** 2 ) ) < 15
+		
+		# barba
+		or math.sqrt( ( ( 2 * x - 199 ) ** 2 ) + ( ( y - 120 ) ** 2 ) ) < 170
+		and not ( math.sqrt( ( ( x - 55 ) ** 2 ) + ( ( 2 * y - 235 ) ** 2 ) ) < 40
+		or math.sqrt( ( ( x - 99 ) ** 2 ) + ( 2 * ( y - 135 ) ** 2 ) ) < 80 )
+		and y > 140
+		) :
+            
+            print ( "  " , end = "" )
+            
+        else :
+            
+            print ( "x " , end = "" )
+        
+    print ( "" )
