@@ -1,0 +1,118 @@
+from os import system
+import time
+from random import randint
+
+cuad = 50
+
+mata = [0] * cuad
+matb = [0] * cuad
+celv = [0] * cuad
+
+z = 0
+
+
+for i in range (cuad) :
+	
+	mata[i] = [0] * cuad
+	matb[i] = [0] * cuad
+	celv[i] = [0] * cuad
+
+
+
+for y in range (0 , cuad , 1) :
+
+	for x in range (0 , cuad , 1) :
+
+		mata[x][y] = randint(0 , 1)
+
+
+
+while z != 1 :
+
+	for y in range (0 , cuad , 1) :
+
+		for x in range (0 , cuad , 1) :
+
+			if mata[x][y] == 0 :
+
+				print( ' ' , end = " " )
+
+			else :
+
+				print( '▀' , end = " " )
+
+		print ()
+
+	print()
+
+	for y in range (0 , cuad , 1) :
+
+		for x in range (0 , cuad , 1) :
+
+			if x - 1 < 0 and y - 1 < 0 :
+
+				celv[x][y] = mata[x + 1][y] + mata[x + 1][y + 1] + mata[x][y + 1]
+
+			elif x - 1 < 0 and y - 1 >= 0 and y + 1 <= cuad - 1 :
+
+				celv[x][y] = mata[x][y - 1] + mata[x + 1][y - 1] + mata[x + 1][y] + mata[x + 1][y + 1] + mata[x][y + 1]
+
+			elif x - 1 < 0 and y + 1 > cuad - 1 :
+
+				celv[x][y] = mata[x][y - 1] + mata[x + 1][y - 1] + mata [x + 1][y]
+
+			elif y + 1 > cuad - 1 and x - 1 >= 0 and x + 1 <= cuad - 1 :
+
+				celv[x][y] = mata[x - 1][y] + mata[x - 1][y - 1] + mata[x][y - 1] + mata[x + 1][y - 1] + mata[x + 1][y]
+
+			elif x + 1 > cuad - 1 and y + 1 > cuad - 1 :
+
+				celv[x][y] = mata[x - 1][y] + mata[x - 1][y - 1] + mata[x][y - 1]
+
+			elif x + 1 > cuad - 1 and y - 1 >= 0 and y + 1 <= cuad - 1 :
+
+				celv[x][y] = mata[x][y - 1] + mata[x - 1][y - 1] + mata[x - 1][y] + mata[x - 1][y + 1] + mata[x][y + 1]
+
+			elif x + 1 > cuad - 1 and y - 1 < 0 :
+
+				celv[x][y] = mata[x - 1][y] + mata[x - 1][y + 1] + mata[x][y + 1]
+
+			elif y - 1 < 0 and x - 1 >= 0 and x + 1 <= cuad - 1 :
+
+				celv[x][y] = mata[x - 1][y] + mata[x - 1][y + 1] + mata[x][y + 1] + mata[x + 1][y + 1] + mata[x + 1][y]
+
+			else :
+
+				celv[x][y] = mata[x - 1][y - 1] + mata[x][y - 1] + mata[x + 1][y - 1] + mata[x - 1][y] + mata[x + 1][y] + mata[x - 1][y + 1] + mata[x][y + 1] + mata[x + 1][y + 1]
+
+
+
+	for y in range (0 , cuad , 1) :
+
+		for x in range (0 , cuad , 1) :
+
+			if mata[x][y] == 0 :
+
+				if celv[x][y] == 3 :
+
+					matb[x][y] = 1
+
+				else :
+
+					matb[x][y] = 0
+
+			else :
+
+				if celv[x][y] == 2 or celv[x][y] == 3 :
+
+					matb[x][y] = 1
+
+				else :
+
+					matb[x][y] = 0
+
+	mata = matb
+
+	time.sleep(0.05)
+
+	system("cls") # Change to clear on linux
