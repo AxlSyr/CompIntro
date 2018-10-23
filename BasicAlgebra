@@ -1,0 +1,204 @@
+def factorial ( algo ) :
+
+	x = 1
+
+	for i in range ( 2 , algo + 1 , 1 ) :
+
+		x *= i
+
+	return x
+
+def series1 ( x , n ) :
+
+	suma = 0
+
+	for i in range ( 1 , n + 1 , 1 ) :
+
+		suma += x ** i
+
+	return suma
+
+def series2 ( n ) :
+
+	suma = 0
+
+	for i in range ( 0 , n + 1 , 1 ) :
+
+		suma += 1 / ( 2 ** i ) 
+
+	return suma
+
+def series3 ( x , n ) :
+
+	suma = 0
+
+	for i in range ( 1 , n + 1 , 1 ) :
+
+		suma += i / ( x + factorial(i) )
+
+	return suma
+
+def permconrep ( n , r ) :
+
+	suma = 1
+
+	for i in range ( r ) :
+
+		suma *= n
+
+	return suma
+
+def permsinrep ( n , r ) :
+
+	return factorial( n ) / factorial( n - r )
+
+def combsinrep ( n , r ) :
+
+	return factorial( n ) / ( factorial( r ) * factorial( n - r ) )
+
+def combconrep ( n , r ) :
+
+	return factorial( n + r - 1 ) / ( factorial( r ) * factorial( n - 1 ) )
+
+try :
+
+	while True :
+
+		print( "***MENU***" )
+		print()
+		print( "¿Qué tipo de operación desea realizar" )
+		print()
+		print( "1.- Series" )
+		print( "2.- Permutaciones" )
+		print( "3.- Combinaciones" )
+		print( "4.- Salir" )
+		print()
+		
+		opcion1 = int( input() )
+
+		print()
+
+		if opcion1 == 1 :
+
+			print( "¿Qué serie desea realizar? " )
+			print()
+			print( "1.- x + x^2 + x^3 + x^4 + ... + x^n" )
+			print( "2.- 1 + 1/2 + 1/4 + 1/8 + 1/16 + ... + 1/(2^n)" )
+			print( "3.- 1/(x+1!) + 2/(x+2!) + 3/(x+3!) + 4/(x+4!) + ... + n/(x+n!)" )
+			print()
+
+			opcion2 = int( input() )
+
+			print()
+
+			if opcion2 == 1 :
+
+				x = int( input( "Valor de x: " ) )
+				n = int( input( "Valor de n: " ) )
+				print()
+
+				print( series1( x , n ) )
+				print()
+
+			elif opcion2 == 2 :
+
+				n = int( input( "Valor de n: " ) )
+				print()
+
+				print( series2( n ) )
+				print()
+
+			elif opcion2 == 3 :
+
+				x = int( input( "Valor de x: " ) )
+				n = int( input( "Valor de n: " ) )
+				print()
+
+				print( series3( x , n ) )
+				print()
+
+			else :
+
+				print( "Elige una opción disponible." )
+				print()
+
+		elif opcion1 == 2 :
+
+			print( "¿Qué permutación desea realizar? " )
+			print()
+			print( "1.- Permutaciones con repetición ( n * n * n * n * ... (r veces) = n^r )" )
+			print( "2.- Permutaciones sin repetición ( n! / (n - r)! )" )
+			print()
+
+			opcion2 = int( input() )
+
+			print()
+
+			if opcion2 == 1 :
+
+				n = int( input( "Valor de n: " ) )
+				r = int( input( "Valor de r: " ) )
+				print()
+
+				print( permconrep( n , r ) )
+				print()
+
+			elif opcion2 == 2 :
+
+				n = int( input( "Valor de n: " ) )
+				r = int( input( "Valor de r: " ) )
+				print()
+
+				print( permsinrep( n , r ) )
+				print()
+
+			else :
+
+				print( "Elige una opción disponible." )
+
+		elif opcion1 == 3 :
+
+			print( "¿Qué combinación desea realizar? " )
+			print()
+			print( "1.- Combinaciones sin repetición ( n! / r!(n - r)! )" )
+			print( "2.- Combinaciones con repetición ( (n + r - 1)! / r!(n - 1)! )" )
+			print()
+
+			opcion2 = int( input() )
+
+			print()
+
+			if opcion2 == 1 :
+
+				n = int( input( "Valor de n: " ) )
+				r = int( input( "Valor de r: " ) )
+				print()
+
+				print( combsinrep( n , r ) )
+				print()
+
+			elif opcion2 == 2 :
+
+				n = int( input( "Valor de n: " ) )
+				r = int( input( "Valor de r: " ) )
+				print()
+
+				print( combconrep( n , r ) )
+				print()
+
+			else :
+
+				print( "Elige una opción disponible." )
+
+		elif opcion1 == 4 :
+
+			break
+
+		else :
+
+			print( "Elige una opción disponible." )
+
+except :
+
+	print()
+	print( "Ha ocurrido un error." )
