@@ -198,7 +198,7 @@ try :
 
 			print( "Elige una opción disponible." )
 
-except :
+except Exception as error :
 
 	print()
-	print( "Ha ocurrido un error." )
+	print( "Ha ocurrido un error tipo " , type(error) , ".")
