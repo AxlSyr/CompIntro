@@ -201,4 +201,4 @@ try :
 except Exception as error :
 
 	print()
-	print( "Ha ocurrido un error tipo " , type(error) , ".")
+	print( "Ha ocurrido un error " , type(error) , ".")
